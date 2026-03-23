@@ -28,12 +28,6 @@ The project is made using simple HTML, CSS, and JavaScript. It uses the OMDb API
 * Data is fetched from OMDb API
 * Movies are displayed on the screen
 
-## 🔮 Future Features
-- Filter movies by year
-- Sort movies alphabetically
-- Improve UI design
-- Add local storage for saving watchlist
-
 ### ⭐ Add to Watchlist
 
 * Each movie has an "Add" button
@@ -49,6 +43,12 @@ The project is made using simple HTML, CSS, and JavaScript. It uses the OMDb API
 
   * No movie is found
   * Watchlist is empty
+ 
+## 🔮 Future Features
+- Filter movies by year
+- Sort movies alphabetically
+- Improve UI design
+- Add local storage for saving watchlist
 
 ### 🎲 Random Movie (Optional)
 
