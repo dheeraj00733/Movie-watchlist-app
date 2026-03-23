@@ -106,10 +106,3 @@ movie-watchlist/
 const API_KEY = "your_api_key";
 ```
 
----
-
-## 📚 What I Learned
-
-* How to fetch data using API
-* Basic Java
-
