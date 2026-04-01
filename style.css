@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -8,12 +7,11 @@ body {
 }
 
 
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  padding: 15px 30px;
 
   background: linear-gradient(90deg, #000000, #1a1a1a, #000000);
   border-bottom: 2px solid red;
@@ -53,7 +51,6 @@ body {
   gap: 10px;
 }
 
-
 .search-section input {
   padding: 14px 18px;
   width: 300px;
@@ -63,19 +60,11 @@ body {
   font-size: 16px;
   background: #222;
   color: white;
-  transition: 0.3s;
 }
-
-.search-section input::placeholder {
-  color: #aaa;
-}
-
 
 .search-section input:focus {
   box-shadow: 0 0 10px red;
-  background: #111;
 }
-
 
 .search-section button {
   padding: 14px 25px;
@@ -85,20 +74,25 @@ body {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
 }
-
 
 .search-section button:hover {
   transform: scale(1.05);
-  background: linear-gradient(45deg, #ff1a1a, red);
 }
 
 
-#moviesContainer,
-#watchlistContainer {
+#moviesContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+
+#watchlistContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px)); /* 🔥 FIX */
+  justify-content: center; /* 🔥 center cards */
   gap: 20px;
   padding: 20px;
 }
@@ -108,13 +102,16 @@ body {
 #watchlistContainer div {
   background: #222;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
   transition: 0.3s;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  width: 100%;
+  max-width: 250px; /* 🔥 prevents stretching */
 }
 
 
@@ -128,14 +125,13 @@ img {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 
 h3 {
   margin: 10px 0;
 }
-
 
 p {
   margin: 5px 0;
@@ -154,7 +150,6 @@ p {
   cursor: pointer;
   transition: 0.3s;
 }
-
 
 #moviesContainer button:hover,
 #watchlistContainer button:hover {
