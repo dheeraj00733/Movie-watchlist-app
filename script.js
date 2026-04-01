@@ -13,12 +13,12 @@ async function searchMovies() {
   container.innerHTML = "" ;
 
   try {
-    const res = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=460a15d4`);
+     const res = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
     const data = await res.json()
     loading.style.display = "none";
 
-    if (data.search){
-        displayMovies(data.search)
+    if (data.Search){
+        displayMovies(data.Search)
     }else{
         container.innerHTML = "<p>No movies found</p>" ;
     }
@@ -33,7 +33,13 @@ function displayMovies(movies){
     movies.forEach(movie => {
         const div = document.createElement("div");
 
-    div.innerHTML = 
+    div.innerHTML = `
     <h3>${movie.Title}</h3>
+    <img src="${movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/150"}"/>
+      <p>${movie.Year}</p>
+      <button>Add to Watchlist</button>
+      `;
+
+      container.appendChild(div)
     })
 }
