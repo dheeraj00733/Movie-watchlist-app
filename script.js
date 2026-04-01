@@ -53,23 +53,41 @@ function showMovies(movies) {
       <h3>${movie.Title}</h3>
       <img src="${poster}">
       <p>${movie.Year}</p>
-      <button onclick="addToWatchlist('${movie.imdbID}')">
-        Add to Watchlist ⭐
-      </button>
+      <button>Add to Watchlist ⭐</button>
     `;
+
+
+    card.querySelector("button").addEventListener("click", () => {
+      addToWatchlist(movie);
+    });
 
     container.appendChild(card);
   });
 }
 
-function addToWatchlist(id) {
 
-  if (!watchlist.includes(id)) {
-    watchlist.push(id);
-    alert("Added ⭐");
-  } else {
+
+function addToWatchlist(movie) {
+
+
+  let exists = watchlist.some(item => item.imdbID === movie.imdbID);
+
+  if (exists) {
     alert("Already added");
+    return;
   }
 
+
+  let newMovie = {
+    Title: movie.Title,
+    Poster: movie.Poster,
+    Year: movie.Year,
+    imdbID: movie.imdbID
+  };
+
+  watchlist.push(newMovie);
+
   localStorage.setItem("watchlist", JSON.stringify(watchlist));
+
+  alert("Added ⭐");
 }
