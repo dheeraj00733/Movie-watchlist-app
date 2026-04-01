@@ -1,45 +1,75 @@
 const API_KEY = "460a15d4";
 
+let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
 
-async function searchMovies() {
+async function handleSearch() {
+
   const query = document.getElementById("searchInput").value;
 
-  if (!query) return;
+  if (query === "") {
+    alert("Enter movie name");
+    return;
+  }
 
-  const loading = document.getElementById("loading");
   const container = document.getElementById("moviesContainer");
+  const loading = document.getElementById("loading");
 
   loading.style.display = "block";
-  container.innerHTML = "" ;
+  container.innerHTML = "";
 
   try {
-     const res = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
-    const data = await res.json()
+    const res = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
+    const data = await res.json();
+
     loading.style.display = "none";
 
-    if (data.Search){
-        displayMovies(data.Search)
-    }else{
-        container.innerHTML = "<p>No movies found</p>" ;
+    if (data.Search) {
+      showMovies(data.Search);
+    } else {
+      container.innerHTML = "<p>No movies found</p>";
     }
-  }catch(error){
+
+  } catch (error) {
+    console.log(error);
     loading.style.display = "none";
-    console.log(error)
   }
 }
 
-function displayMovies(movies){
-    const container = document.getElementById("moviesContainer")
-    movies.forEach(movie => {
-        const div = document.createElement("div");
+function showMovies(movies) {
 
-    div.innerHTML = `
-    <h3>${movie.Title}</h3>
-    <img src="${movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/150"}"/>
+  const container = document.getElementById("moviesContainer");
+  container.innerHTML = "";
+
+  movies.forEach(movie => {
+
+    let poster = movie.Poster;
+    if (poster === "N/A") {
+      poster = "https://via.placeholder.com/150";
+    }
+
+    const card = document.createElement("div");
+
+    card.innerHTML = `
+      <h3>${movie.Title}</h3>
+      <img src="${poster}">
       <p>${movie.Year}</p>
-      <button>Add to Watchlist</button>
-      `;
+      <button onclick="addToWatchlist('${movie.imdbID}')">
+        Add to Watchlist ⭐
+      </button>
+    `;
 
-      container.appendChild(div)
-    })
+    container.appendChild(card);
+  });
+}
+
+function addToWatchlist(id) {
+
+  if (!watchlist.includes(id)) {
+    watchlist.push(id);
+    alert("Added ⭐");
+  } else {
+    alert("Already added");
+  }
+
+  localStorage.setItem("watchlist", JSON.stringify(watchlist));
 }
