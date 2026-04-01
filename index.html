@@ -7,13 +7,19 @@
 </head>
 <body>
 
-  <h1>🎬 Movie Watchlist</h1>
+  <h1>Movie Watchlist</h1>
 
-  <input type="text" id="search" placeholder="Search movies...">
-  <button onclick="searchMovie()">Search</button>
 
-  <div id="movies"></div>
+  <input type="text" id="searchInput" placeholder="Search movies..." />
+  <button onclick="searchMovies()">Search</button>
+
+
+  <p id="loading" style="display:none;">Loading...</p>
+
+
+  <div id="moviesContainer"></div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
