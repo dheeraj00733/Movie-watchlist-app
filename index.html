@@ -6,15 +6,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+ <nav class="navbar">
+    <h2 class="logo">🎬 MovieApp</h2>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Watchlist</a>
+    </div>
+  </nav>
 
-  <h1>Movie Watchlist</h1>
 
-
-  <input type="text" id="searchInput" placeholder="Search movies..." />
-  <button onclick="searchMovies()">Search</button>
-
+  <div class="search-section">
+    <input type="text" id="searchInput" placeholder="Search movies..." />
+    <button onclick="searchMovies()">Search</button>
+  </div>
 
   <p id="loading" style="display:none;">Loading...</p>
+
+
   <div id="moviesContainer"></div>
 
   <script src="script.js"></script>
