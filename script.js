@@ -54,12 +54,16 @@ function showMovies(movies) {
 
     const card = document.createElement("div");
 
-    card.innerHTML = `
-      <h3>${movie.Title}</h3>
-      <img src="${poster}">
-      <p>${movie.Year}</p>
-      <button>Add to Watchlist ⭐</button>
-    `;
+    let isAdded = watchlist.some(item => item.imdbID === movie.imdbID);
+
+card.innerHTML = `
+  <h3>${movie.Title}</h3>
+  <img src="${poster}">
+  <p>${movie.Year}</p>
+  <button ${isAdded ? "disabled" : ""}>
+    ${isAdded ? "Added ✅" : "Add to Watchlist ⭐"}
+  </button>
+`;
 
 
     card.querySelector("button").addEventListener("click", () => {
@@ -93,8 +97,7 @@ function addToWatchlist(movie) {
   watchlist.push(newMovie);
 
   localStorage.setItem("watchlist", JSON.stringify(watchlist));
-
-  alert("Added ⭐");
+  console.log("Added to watchlist");
 }
 
 function handleKey(event) {
