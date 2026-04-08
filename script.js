@@ -91,3 +91,9 @@ function addToWatchlist(movie) {
 
   alert("Added ⭐");
 }
+
+function handleKey(event) {
+  if (event.key === "Enter") {
+    handleSearch();
+  }
+}
