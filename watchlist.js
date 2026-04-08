@@ -5,6 +5,13 @@ const container = document.getElementById("watchlistContainer");
 let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
 
 
+function confirmRemove(id) {
+  if (confirm("Remove this movie?")) {
+    removeMovie(id);
+  }
+}
+
+
 function showWatchlist() {
 
   container.innerHTML = "";
@@ -34,7 +41,7 @@ function showWatchlist() {
       <h3>${title}</h3>
       <img src="${poster}" alt="${title}">
       <p>${year}</p>
-      <button onclick="removeMovie('${id}')">Remove ❌</button>
+      <button onclick="confirmRemove('${id}')">Remove ❌</button>
     `;
 
     container.appendChild(card);
