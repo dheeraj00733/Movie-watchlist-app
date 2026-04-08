@@ -31,7 +31,7 @@ button.innerText = "Searching...";
     if (data.Search) {
       showMovies(data.Search);
     } else {
-      container.innerHTML = "<p>No movies found</p>";
+      container.innerHTML = "<h2 style='text-align:center;'>😢 No movies found</h2>";
     }
 
   } catch (error) {
