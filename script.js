@@ -13,15 +13,20 @@ async function handleSearch() {
 
   const container = document.getElementById("moviesContainer");
   const loading = document.getElementById("loading");
+  const button = document.querySelector(".search-section button");
 
   loading.style.display = "block";
   container.innerHTML = "";
+  button.disabled = true;
+button.innerText = "Searching...";
 
   try {
     const res = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
     const data = await res.json();
 
     loading.style.display = "none";
+    button.disabled = false;
+    button.innerText = "Search";
 
     if (data.Search) {
       showMovies(data.Search);
