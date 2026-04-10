@@ -1,25 +1,43 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Watchlist</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- 🔥 NAVBAR -->
+
   <nav class="navbar">
     <h2 class="logo">🎬 MovieApp</h2>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="watchlist.html">Watchlist</a>
-    </div>
+
+```
+<div class="nav-links">
+  <a href="index.html">Home</a>
+  <a href="watchlist.html">Watchlist</a>
+</div>
+
+<!-- 🌙 TOGGLE BUTTON -->
+<button id="themeToggle" class="toggle-btn">🌙</button>
+```
+
   </nav>
 
-  <h2 style="text-align:center;">⭐ My Watchlist</h2>
+  <!-- 🔥 TITLE -->
+
+  <h2 style="text-align:center; margin-top: 80px;">⭐ My Watchlist</h2>
+
+  <!-- 🔥 WATCHLIST GRID -->
 
   <div id="watchlistContainer"></div>
 
+  <!-- 🔥 JS -->
+
   <script src="watchlist.js"></script>
+
 </body>
 </html>
